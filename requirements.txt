@@ -1,10 +1,15 @@
-numpy
-pandas
-scikit-learn
 python-dotenv
-pyyaml
+pandas
+numpy
 pymongo
 certifi
-pymongo[srv]==3.11
+pymongo[srv]
+scikit-learn
+mlflow
+pyaml
+dagshub
+fastapi
+uvicorn
+python-multipart
 
 # -e .
