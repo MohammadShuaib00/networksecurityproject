@@ -16,7 +16,7 @@ def read_yaml_file(file_path: str) -> dict:
         with open(file_path, "rb") as yaml_file:
             return yaml.safe_load(yaml_file)
     except Exception as e:
-        raise NetworkSecurityException(e, sys) from e
+        raise NetworkSecurityException(e, sys.exc_info())
 
 
 def write_yaml_file(file_path: str, content: object, replace: bool = False) -> None:
@@ -28,7 +28,7 @@ def write_yaml_file(file_path: str, content: object, replace: bool = False) -> N
         with open(file_path, "w") as file:
             yaml.dump(content, file)
     except Exception as e:
-        raise NetworkSecurityException(e, sys)
+        raise NetworkSecurityException(e, sys.exc_info())
 
 
 def save_numpy_array_data(file_path: str, array: np.array):
@@ -43,7 +43,7 @@ def save_numpy_array_data(file_path: str, array: np.array):
         with open(file_path, "wb") as file_obj:
             np.save(file_obj, array)
     except Exception as e:
-        raise NetworkSecurityException(e, sys) from e
+        raise NetworkSecurityException(e, sys.exc_info())
 
 
 def save_object(file_path: str, obj: object) -> None:
@@ -54,7 +54,7 @@ def save_object(file_path: str, obj: object) -> None:
             pickle.dump(obj, file_obj)
         logging.info("Exited the save_object method of MainUtils class")
     except Exception as e:
-        raise NetworkSecurityException(e, sys) from e
+        raise NetworkSecurityException(e, sys.exc_info())
 
 
 def load_object(
@@ -67,7 +67,7 @@ def load_object(
             print(file_obj)
             return pickle.load(file_obj)
     except Exception as e:
-        raise NetworkSecurityException(e, sys) from e
+        raise NetworkSecurityException(e, sys.exc_info())
 
 
 def load_numpy_array_data(file_path: str) -> np.array:
@@ -80,7 +80,7 @@ def load_numpy_array_data(file_path: str) -> np.array:
         with open(file_path, "rb") as file_obj:
             return np.load(file_obj)
     except Exception as e:
-        raise NetworkSecurityException(e, sys) from e
+        raise NetworkSecurityException(e, sys.exc_info())
 
 
 def evaluate_models(X_train, y_train, X_test, y_test, models, param):
@@ -112,4 +112,4 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, param):
         return report
 
     except Exception as e:
-        raise NetworkSecurityException(e, sys)
+        raise NetworkSecurityException(e, sys.exc_info())
